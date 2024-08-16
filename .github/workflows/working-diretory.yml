@@ -7,24 +7,25 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./packages/configuration
     steps:
-      - name: Touch config file
+      - name: check working directory
         run: |
-          touch ./index.txt
-
-      - name: Verify config file
-        run: |
-          echo "Contents of ./packages/configuration:"
+          pwd
+          echo "Contents of default working directory:"
           ls -l
+
+      - name: Touch config file
+        working-directory: packages/configuration
+        run: |
+          pwd
+          echo "Contents of packages/configuration:"
+          ls -l
+          touch ./index.txt
 
       - name: Touch UI file
-        working-directory: ./packages/ui
+        working-directory: packages/ui
         run: |
-          touch ./index.txt
-
-      - name: Verify UI file
-        working-directory: ./packages/ui
-        run: |
-          echo "Contents of ./packages/ui:"
+          pwd
+          echo "Contents of packages/ui:"
           ls -l
+          touch ./index.txt
