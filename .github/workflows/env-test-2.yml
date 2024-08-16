@@ -1,5 +1,5 @@
-name: CI/CD Pipeline
-
+name: Test environment
+run-name: 환경 테스트 (environment)
 on: push
 
 jobs:

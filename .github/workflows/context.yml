@@ -1,5 +1,5 @@
 name: GitHub context
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: Github contexts에 뭐가 들어있는지 체크해보자
 on: [push]
 jobs:
   git-action-contexts:

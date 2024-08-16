@@ -1,4 +1,5 @@
 name: Test needs
+run-name: 의존성(needs) 테스트
 on: push
 
 jobs:

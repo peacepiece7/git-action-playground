@@ -413,8 +413,52 @@ jobs:
 
 ## Environment
 
+[Using environments for deployment](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/using-environments-for-deployment)
+
 prd, stg, dev 환경으로 배포할 때 마다 다른 환경 변수, 시크릿이 필요할 경우 사용한다.
 
-```yml
+`environment`에 환경 이름을 적어주면 된다.
 
+만약에 변수 `vars.BACK_URL`이 `https://myapp.api.<prd|stg|dev>.com` 이라면
+
+settings -> environment -> New environment 버튼을 클릭하고 다음과 같이 추가한다. (dev, stg, prd도 추가해보자)
+
+![git-action-env2](./git-action-5.png)
+![git-action-env](./git-action-4.png)
+
+그리고 다음과 같이 작성한다.
+
+```yml
+name: Test environment
+on: push
+
+jobs:
+  deploy-to-dev:
+    runs-on: ubuntu-latest
+    environment: dev # environment 이름을 적어준다
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Deploy to Development
+        run: echo "${{ vars.BACK_URL }}"
+
+  deploy-to-staging:
+    runs-on: ubuntu-latest
+    environment: stg
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Deploy to Staging
+        run: echo "${{ vars.BACK_URL }}"
+
+  deploy-to-production:
+    runs-on: ubuntu-latest
+    environment:
+      name: prd
+      url: https://myapp.com # 선택 사항으로 배포된 주소를 적어줄 수 있다. (git-action에 배포 주소가 표시되어서 편리하다.)
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Deploy to Production
+        run: echo "${{ vars.BACK_URL }}"
 ```

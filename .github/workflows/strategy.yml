@@ -1,4 +1,5 @@
 name: Test strategy
+run-name: 전략 테스트 (strategy)
 on: push
 
 jobs:

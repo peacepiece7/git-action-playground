@@ -1,4 +1,5 @@
 name: Test matrix
+run-name: 행렬 테스트 (matrix)
 on: push
 
 jobs:

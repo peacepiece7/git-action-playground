@@ -1,4 +1,5 @@
 name: Test working directory
+run-name: 작업 디렉토리 테스트 (working directory)
 on: push
 
 jobs:
