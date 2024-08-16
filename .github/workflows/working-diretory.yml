@@ -7,12 +7,12 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: packages/configuration
+        working-directory: ./packages/configuration
     steps:
       - name: touch config file
         run: |
           touch ./index.txt
       - name: touch ui file
-        working-directory: packages/ui
+        working-directory: ./packages/ui
         run: |
           touch ./index.txt
