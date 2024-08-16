@@ -1,0 +1,33 @@
+name: CI/CD Pipeline
+
+on: push
+
+jobs:
+  deploy-to-dev:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Deploy to Development
+        run: echo "${{ secrets.INFORMATION }}"
+
+  deploy-to-staging:
+    runs-on: ubuntu-latest
+    environment: stg
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Deploy to Staging
+        run: echo "${{ secrets.INFORMATION }}"
+
+  deploy-to-production:
+    runs-on: ubuntu-latest
+    environment:
+      name: prd
+      url: https://myapp.com
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Deploy to Production
+        run: echo "${{ secrets.INFORMATION }}"
