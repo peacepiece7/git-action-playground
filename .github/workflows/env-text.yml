@@ -1,5 +1,6 @@
-name: Deployment
+name: Text Environment
 on: push
+
 jobs:
   deployment:
     runs-on: ubuntu-latest
