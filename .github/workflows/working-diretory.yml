@@ -8,6 +8,9 @@ jobs:
       run:
         shell: bash
     steps:
+      - name: Checkout the repository.
+        uses: actions/checkout@v3
+
       - name: check working directory
         run: |
           pwd
