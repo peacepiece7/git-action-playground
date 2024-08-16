@@ -284,13 +284,26 @@ runner에는 현재 실행중인 runner에 대한 정보가 들어가 있다.
 
 matrix 실행 전략을 설정할 때 사용한다.
 
+test-group 1, 2와 node 14, 16을 각각 조합해서 실행, 총 4번 실행된다.
+
 ```yml
+name: Test strategy
+on: push
+
 jobs:
-  build:
-    runs-on: ubuntu-20.04
+  test:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.18.0]
+        test-group: [1, 2] # 이거 이름은 아무거나 해도 된다.
+        node: [14, 16]
+    steps:
+      - run: echo "Mock test logs" > test-job-${{ strategy.job-index }}.txt
+      - name: Upload logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: Build log for job ${{ strategy.job-index }}
+          path: test-job-${{ strategy.job-index }}.txt
 ```
 
 ### matrix
