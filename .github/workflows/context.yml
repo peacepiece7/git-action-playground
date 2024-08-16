@@ -1,0 +1,55 @@
+name: GitHub context
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "print all github context info"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        shell: bash
+      - run: echo "print all env context info"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(env) }}
+        shell: bash
+      - run: echo "print all vars context info"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(vars) }}
+        shell: bash
+      - run: echo "print all job context info"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(job) }}
+        shell: bash
+      - run: echo "print all jobs context info"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(jobs) }}
+        shell: bash
+      - run: echo "print all steps context info"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(steps) }}
+        shell: bash
+      - run: echo "print all runner context info"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(runner) }}
+        shell: bash
+      - run: echo "print all secrets context info"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(secrets) }}
+        shell: bash
+      - run: echo "print all strategy context info"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(strategy) }}
+        shell: bash
+      - run: echo "print all matrix context info"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(matrix) }}
+        shell: bash
+      - run: echo "print all needs context info"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(needs) }}
+        shell: bash
+      - run: echo "print all inputs context info"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(inputs) }}
+        shell: bash

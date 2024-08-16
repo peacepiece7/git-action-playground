@@ -1,6 +1,7 @@
 name: Greeting on variable day
-on: [push]
-
+on:
+  schedule:
+    - cron: '0 0 * * 1' # Every Monday at 00:00 UTC
 env:
   DAY_OF_WEEK: Monday
 
@@ -11,11 +12,11 @@ jobs:
       Greeting: Hello
     steps:
       - name: Greeting
-        run: echo "$Greeting $Name today is $DAY_OF_WEEK"
+        run: echo "$Greeting $Name today is $DAY_OF_WEEK" # Hello John today is Monday
         env:
           Name: 'John'
       - name: Hey
-        run: echo "Hi $Name"
+        run: echo "Hi $Name" # Hi Mona
         env:
           Name: 'Mona'
   greeting_job_kr:
@@ -24,10 +25,10 @@ jobs:
       Greeting: 안녕
     steps:
       - name: Greeting
-        run: echo "$Greeting $Name 오늘은 $DAY_OF_WEEK"
+        run: echo "$Greeting $Name 오늘은 $DAY_OF_WEEK" # 안녕 Mona 오늘은 Monday
         env:
           Name: 'Mona'
       - name: Hey
-        run: echo "안녕 $Name"
+        run: echo "안녕 $Name" # 안녕 John
         env:
           Name: 'John'
