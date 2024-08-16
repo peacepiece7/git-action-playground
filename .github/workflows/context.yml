@@ -21,10 +21,10 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(job) }}
         shell: bash
-      - run: echo "print all jobs context info"
-        env:
-          GITHUB_CONTEXT: ${{ toJson(jobs) }}
-        shell: bash
+      #  - run: echo "print all jobs context info"
+      #   env:
+      #     GITHUB_CONTEXT: ${{ toJson(jobs) }}
+      #   shell: bash
       - run: echo "print all steps context info"
         env:
           GITHUB_CONTEXT: ${{ toJson(steps) }}
@@ -33,10 +33,10 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(runner) }}
         shell: bash
-      - run: echo "print all secrets context info"
-        env:
-          GITHUB_CONTEXT: ${{ toJson(secrets) }}
-        shell: bash
+      #   - run: echo "print all secrets context info"
+      #     env:
+      #       GITHUB_CONTEXT: ${{ toJson(secrets) }}
+      #     shell: bash
       - run: echo "print all strategy context info"
         env:
           GITHUB_CONTEXT: ${{ toJson(strategy) }}
