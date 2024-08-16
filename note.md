@@ -286,6 +286,8 @@ matrix 실행 전략을 설정할 때 사용한다.
 
 test-group 1, 2와 node 14, 16을 각각 조합해서 실행, 총 4번 실행된다.
 
+![git-action-job](./git-action-1.png)
+
 ```yml
 name: Test strategy
 on: push
@@ -310,6 +312,55 @@ jobs:
 
 strategy에서 정의한 행렬의 값이 들어간다.
 
-```yml
+![git-action-job](./git-action-2.png)
 
+```yml
+name: Test matrix
+on: push
+
+jobs:
+  matrix-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        name: ['Mona', 'Lynn']
+        hi: ['Hello', 'Hi']
+    steps:
+      - run: echo "${{ matrix.hi }} ${{ matrix.name }}"
+```
+
+### needs
+
+job간의 종속성을 설정할 때 사용한다.
+
+말이 어려운데 다른 job에 있는 정보를 불러올 때 쓴다.
+
+```yml
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    outputs:
+      output_1: ${{ steps.gen_output.outputs.output_1 }}
+      output_2: ${{ steps.gen_output.outputs.output_2 }}
+      output_3: ${{ steps.gen_output.outputs.output_3 }}
+    strategy:
+      matrix:
+        version: [1, 2, 3]
+    steps:
+      - name: Generate output
+        id: gen_output
+        run: |
+          version="${{ matrix.version }}"
+          echo "output_${version}=${version}" >> "$GITHUB_OUTPUT"
+  job2:
+    runs-on: ubuntu-latest
+    needs: [job1]
+    steps:
+      # Will show
+      # {
+      #   "output_1": "1",
+      #   "output_2": "2",
+      #   "output_3": "3"
+      # }
+      - run: echo '${{ toJSON(needs.job1.outputs) }}'
 ```

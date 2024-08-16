@@ -9,4 +9,4 @@ jobs:
         name: ['Mona', 'Lynn']
         hi: ['Hello', 'Hi']
     steps:
-      - run: echo "${{ matrix.hi }} ${{ matrix.name}}"
+      - run: echo "${{ matrix.hi }} ${{ matrix.name }}"
