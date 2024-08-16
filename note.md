@@ -331,7 +331,7 @@ jobs:
 
 ### needs
 
-job간의 종속성을 설정할 때 사용한다.
+[job간의 종속성을 설정할 때 사용](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/passing-information-between-jobs#example-defining-outputs-for-a-job)한다.
 
 말이 어려운데 다른 job에 있는 정보를 불러올 때 쓴다.
 
@@ -364,3 +364,7 @@ jobs:
       # }
       - run: echo '${{ toJSON(needs.job1.outputs) }}'
 ```
+
+job1이 끝나면 job2가 실행된다.
+
+![needs](./git-action-3.png)

@@ -12,6 +12,7 @@ jobs:
         id: gen_output
         run: |
           version="${{ matrix.version }}"
+          echo "output_${version}=${version}" >> "$GITHUB_OUTPUT"
     outputs:
       output_1: ${{ steps.gen_output.outputs.output_1 }}
       output_2: ${{ steps.gen_output.outputs.output_2 }}
