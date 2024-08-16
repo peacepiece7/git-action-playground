@@ -5,7 +5,7 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "print all github context info ${{ toJson(github) }}"
+      - run: echo "print all github context info"
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         shell: bash
