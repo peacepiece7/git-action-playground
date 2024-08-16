@@ -2,11 +2,11 @@ name: Test strategy
 on: push
 
 jobs:
-  test:
+  strategy-test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        asdasd: [1, 2]
+        test-group: [1, 2]
         node: [14, 16]
     steps:
       - run: echo "Mock test logs" > test-job-${{ strategy.job-index }}.txt

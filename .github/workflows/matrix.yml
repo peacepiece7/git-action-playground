@@ -1,0 +1,12 @@
+name: Test matrix
+on: push
+
+jobs:
+  matrix-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        name: ['Mona', 'Lynn']
+        hi: ['Hello', 'Hi']
+    steps:
+      - run: echo "${{ matrix.hi }} ${{ matrix.name}}"

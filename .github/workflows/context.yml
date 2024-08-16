@@ -2,7 +2,7 @@ name: GitHub context
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  git-action-contexts:
     runs-on: ubuntu-latest
     env:
       GREETING: Hello
