@@ -2,17 +2,29 @@ name: Test working directory
 on: push
 
 jobs:
-  touch-config-file:
+  create-index-files:
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
         working-directory: ./packages/configuration
     steps:
-      - name: touch config file
+      - name: Touch config file
         run: |
           touch ./index.txt
-      - name: touch ui file
+
+      - name: Verify config file
+        run: |
+          echo "Contents of ./packages/configuration:"
+          ls -l
+
+      - name: Touch UI file
         working-directory: ./packages/ui
         run: |
           touch ./index.txt
+
+      - name: Verify UI file
+        working-directory: ./packages/ui
+        run: |
+          echo "Contents of ./packages/ui:"
+          ls -l
