@@ -368,3 +368,53 @@ jobs:
 job1이 끝나면 job2가 실행된다.
 
 ![needs](./git-action-3.png)
+
+## working directory
+
+[Setting a default shell and working directory](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/setting-a-default-shell-and-working-directory#setting-default-shell-and-working-directory)
+
+```yml
+name: Test working directory
+on: push
+
+jobs:
+  create-index-files:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      # git pull로 저장소 가져오기
+      - name: Checkout the repository.
+        uses: actions/checkout@v3
+
+      - name: check working directory
+        run: |
+          pwd
+          echo "Contents of default working directory:"
+          ls -l
+
+      - name: Touch config file
+        working-directory: packages/configuration
+        run: |
+          pwd
+          echo "Contents of packages/configuration:"
+          ls -l
+          touch ./index.txt
+
+      - name: Touch UI file
+        working-directory: packages/ui
+        run: |
+          pwd
+          echo "Contents of packages/ui:"
+          ls -l
+          touch ./index.txt
+```
+
+## Environment
+
+prd, stg, dev 환경으로 배포할 때 마다 다른 환경 변수, 시크릿이 필요할 경우 사용한다.
+
+```yml
+
+```
