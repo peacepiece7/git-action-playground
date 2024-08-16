@@ -1,4 +1,4 @@
-name: Test Environment
+name: Text Environment
 on: push
 
 jobs:
@@ -8,20 +8,22 @@ jobs:
     steps:
       - name: Print Environment
         run: |
-          echo "Environment : ${{ toJson(jobs) }}"
-  # staging:
-  #   runs-on: ubuntu-latest
-  #   environment: stg
-  #   steps:
-  #     - name: Print Environment
-  #       run: |
-  #         echo "Environment : ${{ jobs.staging.environment}}"
-  # production:
-  #   runs-on: ubuntu-latest
-  #   environment:
-  #     name: prd
-  #     url: https://github.com/peacepiece7/git-action-playground
-  #   steps:
-  #     - name: Print Environment
-  #       run: |
-  #         echo "Environment : ${{ jobs.production.environment}}"
+          echo "Environment: dev"
+
+  staging:
+    runs-on: ubuntu-latest
+    environment: stg
+    steps:
+      - name: Print Environment
+        run: |
+          echo "Environment: stg"
+
+  production:
+    runs-on: ubuntu-latest
+    environment:
+      name: prd
+      url: https://github.com/peacepiece7/git-action-playground
+    steps:
+      - name: Print Environment
+        run: |
+          echo "Environment: prd"
