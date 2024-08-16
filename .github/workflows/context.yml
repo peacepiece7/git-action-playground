@@ -4,6 +4,8 @@ on: [push]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
+    env:
+      GREETING: Hello
     steps:
       - run: echo "print all github context info"
         env:
@@ -11,15 +13,15 @@ jobs:
         shell: bash
       - run: echo "print all env context info"
         env:
-          GITHUB_CONTEXT: ${{ toJson(env) }}
+          ENV_CONTEXT: ${{ toJson(env) }}
         shell: bash
       - run: echo "print all vars context info"
         env:
-          GITHUB_CONTEXT: ${{ toJson(vars) }}
+          VARS_CONTEXT: ${{ toJson(vars) }}
         shell: bash
       - run: echo "print all job context info"
         env:
-          GITHUB_CONTEXT: ${{ toJson(job) }}
+          JOB_CONTEXT: ${{ toJson(job) }}
         shell: bash
       #  - run: echo "print all jobs context info"
       #   env:
@@ -27,11 +29,11 @@ jobs:
       #   shell: bash
       - run: echo "print all steps context info"
         env:
-          GITHUB_CONTEXT: ${{ toJson(steps) }}
+          STEPS_CONTEXT: ${{ toJson(steps) }}
         shell: bash
       - run: echo "print all runner context info"
         env:
-          GITHUB_CONTEXT: ${{ toJson(runner) }}
+          RUNNER_CONTEXT: ${{ toJson(runner) }}
         shell: bash
       #   - run: echo "print all secrets context info"
       #     env:
@@ -39,17 +41,17 @@ jobs:
       #     shell: bash
       - run: echo "print all strategy context info"
         env:
-          GITHUB_CONTEXT: ${{ toJson(strategy) }}
+          STRATEGY: ${{ toJson(strategy) }}
         shell: bash
       - run: echo "print all matrix context info"
         env:
-          GITHUB_CONTEXT: ${{ toJson(matrix) }}
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
         shell: bash
       - run: echo "print all needs context info"
         env:
-          GITHUB_CONTEXT: ${{ toJson(needs) }}
+          NEEDS_CONTEXT: ${{ toJson(needs) }}
         shell: bash
       - run: echo "print all inputs context info"
         env:
-          GITHUB_CONTEXT: ${{ toJson(inputs) }}
+          INPUTS_CONTEXT: ${{ toJson(inputs) }}
         shell: bash
