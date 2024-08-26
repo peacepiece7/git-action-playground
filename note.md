@@ -465,4 +465,41 @@ jobs:
         run: echo "${{ vars.BACK_URL }}"
 ```
 
+## 더 알아볼 것들
+
+캐싱, 병렬 실행, 워크플로우 트리거 이벤트, 워크플로우 구문 등 기본적인 사용방법 외에 더 알아볼 것들
+
 ## Concurrency
+
+[concurrency](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/control-the-concurrency-of-workflows-and-jobs)
+
+## cache dependency
+
+[cache dependency](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows)
+
+## Workflow trigger event
+
+[workflow trigger event](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/triggering-a-workflow)
+
+```yml
+on:
+  push:
+    tags:
+      - v1.**
+
+on:
+  push:
+    paths:
+      - '**.js'
+
+on:
+  push:
+    branches:
+      - 'releases/**'
+    paths:
+      - '**.js'
+```
+
+## workflow syntax
+
+[workflow syntax](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#onpushbranchestagsbranches-ignoretags-ignore)
