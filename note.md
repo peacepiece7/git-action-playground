@@ -70,7 +70,7 @@ github에서 제공해주는 기능으로
 ```yaml
 jobs:
   foo:
-    :steps:
+    steps:
       - name: Checkout current commit (${{ github.sha }}) # github 요 부분이 github context
       - name: Set up Node.js ${{ matrix.node-version }} # matrix 요 부분이 github context
 ```
@@ -90,11 +90,11 @@ jobs:
 - needs
 - inputs
 
-위 컨택스트 들은 모두 사용할 수 있는 공간이 제한되어 있다.
+위 컨텍스트 들은 모두 사용할 수 있는 공간이 제한되어 있다.
 
 ([컨텍스트 가용성](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/accessing-contextual-information-about-workflow-runs#context-availability))에서 확인할 수 있다.
 
-matrix에 따라서 사용할 수 있는 컨텍스트가 달라지는데 다음과 같이 작성하면 github에서 객체에 어떤 속성이 있는지 확인할 수 있다.
+matrix에 따라서 사용할 수 있는 컨텍스트가 달라지는데 다음과 같이 작성하면 github contexts 어떤 속성이 있는지 확인할 수 있다.
 
 ```yml
 name: GitHub Context
@@ -333,7 +333,7 @@ jobs:
 
 [job간의 종속성을 설정할 때 사용](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/passing-information-between-jobs#example-defining-outputs-for-a-job)한다.
 
-말이 어려운데 다른 job에 있는 정보를 불러올 때 쓴다.
+말로 설명하기 어려운데 job1의 job context를 job2에서 불러올 때 쓴다고 생각하면 된다.
 
 ```yml
 jobs:
@@ -372,6 +372,8 @@ job1이 끝나면 job2가 실행된다.
 ## working directory
 
 [Setting a default shell and working directory](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/setting-a-default-shell-and-working-directory#setting-default-shell-and-working-directory)
+
+git-action이 돌아가는 컴퓨터의 작업 디렉터리를 설정할 때 사용한다.
 
 ```yml
 name: Test working directory
@@ -462,3 +464,5 @@ jobs:
       - name: Deploy to Production
         run: echo "${{ vars.BACK_URL }}"
 ```
+
+## Concurrency

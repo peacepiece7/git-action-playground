@@ -1,0 +1,12 @@
+on:
+  push:
+    branches:
+      - main
+jobs:
+  job-1:
+    runs-on: ubuntu-latest
+concurrency:
+  # ci-~ 인 브랜치 또는 태그를 그룹으로 묶음
+  group: ci-${{ github.ref }}
+  # 브랜치 또는 태그가 똑같은 이름을 가진 작업이 실행 중일 때 이전 작업 취소
+  cancel-in-progress: true
